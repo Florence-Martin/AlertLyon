@@ -25,28 +25,28 @@ const AlertForm: React.FC<AlertezNousProps> = ({ navigation, route }) => {
     const [showTimePicker, setShowTimePicker] = useState<boolean>(false);
     const [photo, setPhoto] = useState<string | null>(null);
 
-    const handleChoosePhoto = async () => {
-        try {
-            const [status, requestPermission] = ImagePicker.useMediaLibraryPermissions();
-            if (status !== 'granted') {
-                Alert.alert('Permission non accordée', 'Permission non accordée pour accéder à la bibliothèque de médias.');
-                return;
-            }
+    // const handleChoosePhoto = async () => {
+    //     try {
+    //         const [status, requestPermission] = ImagePicker.useMediaLibraryPermissions();
+    //         if (status !== 'granted') {
+    //             Alert.alert('Permission non accordée', 'Permission non accordée pour accéder à la bibliothèque de médias.');
+    //             return;
+    //         }
     
-            const result = await ImagePicker.launchImageLibraryAsync({
-                mediaTypes: ImagePicker.MediaTypeOptions.Images,
-                allowsEditing: true,
-                aspect: [4, 3],
-                quality: 1,
-            });
+    //         const result = await ImagePicker.launchImageLibraryAsync({
+    //             mediaTypes: ImagePicker.MediaTypeOptions.Images,
+    //             allowsEditing: true,
+    //             aspect: [4, 3],
+    //             quality: 1,
+    //         });
     
-            if (!result.cancelled) {
-                setPhoto(result.uri);
-            }
-        } catch (error) {
-            Alert.alert('Erreur', 'Une erreur est survenue lors de la sélection de la photo.');
-        }
-    };
+    //         if (!result.cancelled) {
+    //             setPhoto(result.uri);
+    //         }
+    //     } catch (error) {
+    //         Alert.alert('Erreur', 'Une erreur est survenue lors de la sélection de la photo.');
+    //     }
+    // };
 
     const handleSubmit = () => {
         if (!alertType || !name || !email || !phoneNumber || !description || !address || !postcode || !city || !date) {
@@ -64,8 +64,8 @@ const AlertForm: React.FC<AlertezNousProps> = ({ navigation, route }) => {
             city,
             email,
             phoneNumber,
-            date: date.toISOString(),
-            time: time.toISOString(),
+            date,
+            time,
         };
 
         emailjs
@@ -186,10 +186,10 @@ const AlertForm: React.FC<AlertezNousProps> = ({ navigation, route }) => {
                     />
                 )}
 
-                <View style={styles.photoContainer}>
+                {/* <View style={styles.photoContainer}>
                     <Button title="Choisir une photo" onPress={handleChoosePhoto} />
                     {photo && <Image source={{ uri: photo }} style={styles.image} />}
-                </View>
+                </View> */}
 
                 <Button title="Envoyer" onPress={handleSubmit} />
             </View>
