@@ -13,10 +13,16 @@ export interface HomeProps {
   route: RouteProp<RootTabParamList, "Accueil">;
 }
 
+// Définir IncidentType pour le composant AlertForm
+export interface IncidentType {
+    value: string;
+    label: string;
+  }
+
 // Définir TemplateParams pour les paramètres du formulaire d'alerte
 export interface TemplateParams {
   [key: string]: string | Date;
-  alertType: string;
+  selectedIncidentType: string;
   name: string;
   firstname: string;
   description: string;

@@ -1,8 +1,8 @@
 // Déclaration du module pour expo-image-picker
-declare module 'expo-image-picker' {
-    import * as ImagePicker from 'expo-image-picker';
-    export * from 'expo-image-picker';
-  }
+// declare module 'expo-image-picker' {
+//     import * as ImagePicker from 'expo-image-picker';
+//     export * from 'expo-image-picker';
+//   }
   
   // Déclaration du module pour @env
   declare module '@env' {
