@@ -1,27 +1,37 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import React from "react";
+import { StyleSheet } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import { StatusBar } from "expo-status-bar";
 import ImageViewer from "./ImageViewer";
-import { HomeProps } from "../Navigation/StackNavigation";
+
+import ParallaxScrollView from "./ParallaxScrollView";
+import { ThemedView } from "./ThemedView";
+import { ThemedText } from "./ThemedText";
 
 const PlaceholderImage = require("../assets/images/accueil-image.jpeg");
 
-const Home: React.FC<HomeProps> = ({ navigation, route }) => {
-
+const Home: React.FC = () => {
   return (
-    <View style={styles.container}>
-      <View style={styles.banner}>
-        <Text style={styles.bannerText}>Bienvenue à Lyon</Text>
-        <Text style={styles.title}>
+    <ParallaxScrollView
+      headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
+      headerImage={
+        <Ionicons size={310} name="people" style={styles.headerImage} />
+      }
+    >
+      <ThemedView style={styles.titleContainer}>
+        <ThemedText type="title" style={styles.bannerText}>
+          Bienvenue à Lyon
+        </ThemedText>
+        <ThemedText style={styles.subtitle}>
           Alertez-nous !{"\n"} Accident, travaux, problème de voirie (propreté,
           éclairage,...) !
-        </Text>
-      </View>
-      <View>
+        </ThemedText>
+      </ThemedView>
+      <ThemedView style={styles.contentContainer}>
         <ImageViewer placeholderImageSource={PlaceholderImage} />
-      </View>
-           <StatusBar style="auto" />
-    </View>
+      </ThemedView>
+      <StatusBar style="auto" />
+    </ParallaxScrollView>
   );
 };
 
@@ -31,34 +41,35 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: 60,
   },
   banner: {
-    marginBottom: 20,
+    width: "100%",
+    height: 50,
+    resizeMode: "cover",
+  },
+  titleContainer: {
+    alignItems: "center",
+    padding: 16,
+    backgroundColor: "#383E42",
   },
   bannerText: {
-    color: "#000",
-    fontSize: 18,
+    color: "white",
+    fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 4,
+    marginBottom: 8,
   },
-  title: {
-    fontSize: 18,
+  subtitle: {
+    color: "white",
+    fontSize: 16,
     textAlign: "center",
   },
-  pickerContainer: {
-    marginTop: 20,
-    width: "100%",
-    alignItems: "center",
+  contentContainer: {
+    padding: 16,
   },
-  pickerLabel: {
-    fontSize: 16,
-    marginBottom: 10,
-  },
-  picker: {
-    height: 50,
-    width: 200,
+  headerImage: {
+    color: "#808080",
+    bottom: -90,
+    left: -35,
+    position: "absolute",
   },
 });

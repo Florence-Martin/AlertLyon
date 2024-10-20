@@ -15,9 +15,9 @@ export interface HomeProps {
 
 // Définir IncidentType pour le composant AlertForm
 export interface IncidentType {
-    value: string;
-    label: string;
-  }
+  value: string;
+  label: string;
+}
 
 // Définir TemplateParams pour les paramètres du formulaire d'alerte
 export interface TemplateParams {
