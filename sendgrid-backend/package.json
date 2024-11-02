@@ -14,6 +14,7 @@
   "description": "",
   "dependencies": {
     "@sendgrid/mail": "^8.1.4",
+    "@types/connect": "^3.4.38",
     "body-parser": "^1.20.3",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
@@ -21,9 +22,17 @@
     "joi": "^17.13.3"
   },
   "devDependencies": {
+    "@types/body-parser": "^1.19.5",
     "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
+    "@types/express-serve-static-core": "^5.0.1",
+    "@types/http-errors": "^2.0.4",
+    "@types/mime": "^3.0.4",
     "@types/node": "^22.8.6",
+    "@types/qs": "^6.9.16",
+    "@types/range-parser": "^1.2.7",
+    "@types/send": "^0.17.4",
+    "@types/serve-static": "^1.15.7",
     "typescript": "^5.6.3"
   }
 }
