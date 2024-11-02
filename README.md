@@ -1,23 +1,31 @@
-### 🚧
+# 🚧 Alert Lyon
 
-**Alert Lyon** est une application faite pour alerter la ville de Lyon sur les problèmes pouvant affecter la sécurité des lyonnais (accident, travaux...)
+**Alert Lyon** est une application conçue pour signaler à la ville de Lyon les problèmes susceptibles d'affecter la sécurité des habitants (accidents, travaux, voirie, etc.).
 
 ---
 
-### Configurer avec Emailjs, mais...Emailjs ne fonctionne pas avec React Native !!
+## Intégration de SendGrid avec un Backend
 
-**EmailJS** ne prend pas en charge les appels API depuis des applications mobiles comme **React Native**, ce qui entraîne l'erreur : **"API calls are disabled for non-browser applications"**. Voici deux alternatives pour contourner ce problème :
+Pour gérer l'envoi des e-mails de manière sécurisée, nous avons mis en place un **backend utilisant Node.js et TypeScript** dans le dossier `sendgrid-backend`. Cela permet de protéger les informations sensibles, comme la clé API de SendGrid, en évitant de les exposer dans le code client de l'application.
 
-### Alternative 1 : Serveur intermédiaire avec Node.js
+---
 
-Créez un **serveur Node.js** qui interagit avec EmailJS. L'application React Native envoie une requête HTTP à ce serveur, qui gère l'envoi de l'e-mail via EmailJS.
+### Structure du Projet
 
-- **Avantages** : Contrôle total, permet de garder EmailJS.
-- **Inconvénients** : Nécessite un serveur et un déploiement (ex : Heroku, Vercel, ou Railway).
+- Le backend est situé dans le dossier `sendgrid-backend` et comprend :
+  - **src/server.ts** : Le fichier principal du serveur, où la logique d'envoi d'e-mails est implémentée.
+  - **tsconfig.json** : Fichier de configuration TypeScript.
+  - **dist/** : Dossier de sortie pour les fichiers compilés TypeScript.
+  - **.env** : Fichier pour les variables d'environnement, qui devrait inclure la clé API de SendGrid (actuellement vide pour cet exercice).
 
-### Alternative 2 : Utiliser SendGrid
+---
 
-Utilisez **SendGrid** (ou Mailgun, ou AWS SES) pour envoyer des e-mails directement depuis React Native avec leur API, sans serveur intermédiaire.
+## Sécurité de la clé API
 
-- **Avantages** : Facile à configurer, pas de serveur nécessaire.
-- **Inconvénients** : Nécessite un compte SendGrid.
+Pour cette application d'entraînement, **la clé API de SendGrid n'est pas incluse** dans le projet. En situation de production, il est essentiel d'utiliser un fichier `.env` ou un gestionnaire de variables d'environnement pour sécuriser les informations sensibles.
+
+### Exemple d'utilisation de `.env`
+
+```env
+SENDGRID_API_KEY=VotreCléAPIici
+```

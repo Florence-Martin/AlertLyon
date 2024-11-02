@@ -122,16 +122,24 @@ const AlertForm: React.FC<AlertezNousProps> = ({ navigation, route }) => {
       time,
     };
 
-    emailjs
-      .send(
-        REACT_APP_SERVICE_ID,
-        REACT_APP_TEMPLATE_ID,
-        templateParams,
-        REACT_APP_USER_ID
-      )
-      .then((response) => {
-        console.log("E-mail envoyé avec succès", response);
-        Alert.alert("Succès", "L'e-mail a été envoyé avec succès.");
+    // Appeler le backend pour envoyer l'e-mail
+    fetch("http://localhost:5000/send-email", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(templateParams),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message) {
+          Alert.alert("Succès", "L'e-mail a été envoyé avec succès.");
+        } else {
+          Alert.alert(
+            "Erreur",
+            "Une erreur est survenue lors de l'envoi de l'e-mail."
+          );
+        }
       })
       .catch((error) => {
         console.error("Erreur lors de l'envoi de l'e-mail", error);
