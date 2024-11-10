@@ -2,13 +2,13 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { StatusBar } from "expo-status-bar";
-import ImageViewer from "./ImageViewer";
 
 import ParallaxScrollView from "./ParallaxScrollView";
 import { ThemedView } from "./ThemedView";
 import { ThemedText } from "./ThemedText";
+import ImageViewer from "./ImageViewer";
 
-const PlaceholderImage = require("../assets/images/accueil-image.jpeg");
+const PlaceholderImage = require("../assets/images/accueil.jpg");
 
 const Home: React.FC = () => {
   return (
@@ -48,6 +48,9 @@ const styles = StyleSheet.create({
     resizeMode: "cover",
   },
   titleContainer: {
+    marginTop: -30,
+    width: "100%",
+    alignSelf: "stretch",
     alignItems: "center",
     padding: 16,
     backgroundColor: "#383E42",
@@ -56,7 +59,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 8,
   },
   subtitle: {
     color: "white",

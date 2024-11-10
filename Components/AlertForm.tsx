@@ -7,12 +7,12 @@ import {
   Button,
   Image,
   Pressable,
-  ScrollView,
   Alert,
 } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import { Picker } from "@react-native-picker/picker";
-import Ionicons from "react-native-vector-icons/Ionicons";
+import { Ionicons } from "@expo/vector-icons";
+
 import * as ImagePicker from "expo-image-picker";
 import emailjs from "emailjs-com";
 import {
@@ -26,6 +26,7 @@ import {
   TemplateParams,
   IncidentType,
 } from "../Navigation/StackNavigation";
+import ParallaxScrollView from "./ParallaxScrollView";
 
 const AlertForm: React.FC<AlertezNousProps> = ({ navigation, route }) => {
   const incidentTypes: IncidentType[] = [
@@ -163,7 +164,12 @@ const AlertForm: React.FC<AlertezNousProps> = ({ navigation, route }) => {
   };
 
   return (
-    <ScrollView>
+    <ParallaxScrollView
+      headerBackgroundColor={{ light: "#D0D0D0", dark: "#353636" }}
+      headerImage={
+        <Ionicons size={310} name="code" style={styles.headerImage} />
+      }
+    >
       <MapViewer />
 
       <Picker
@@ -268,7 +274,7 @@ const AlertForm: React.FC<AlertezNousProps> = ({ navigation, route }) => {
           <Button title="Envoyer" onPress={handleSubmit} />
         </View>
       </View>
-    </ScrollView>
+    </ParallaxScrollView>
   );
 };
 
@@ -307,6 +313,7 @@ const styles = StyleSheet.create({
     color: "#fff",
   },
   selectInput: {
+    marginTop: -80,
     paddingLeft: 80,
     paddingRight: 80,
   },
@@ -365,5 +372,11 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginBottom: 16,
     textAlign: "center",
+  },
+  headerImage: {
+    color: "#808080",
+    bottom: -90,
+    left: -35,
+    position: "absolute",
   },
 });
