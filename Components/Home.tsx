@@ -27,7 +27,7 @@ const Home: React.FC = () => {
           éclairage,...) !
         </ThemedText>
       </ThemedView>
-      <ThemedView style={styles.contentContainer}>
+      <ThemedView>
         <ImageViewer placeholderImageSource={PlaceholderImage} />
       </ThemedView>
       <StatusBar style="auto" />
@@ -53,21 +53,19 @@ const styles = StyleSheet.create({
     alignSelf: "stretch",
     alignItems: "center",
     padding: 16,
-    backgroundColor: "#383E42",
   },
   bannerText: {
-    color: "white",
-    fontSize: 24,
+    color: "#383E42",
+    fontSize: 30,
     fontWeight: "bold",
   },
   subtitle: {
-    color: "white",
-    fontSize: 16,
+    color: "#383E42",
+    fontSize: 24,
+    fontWeight: "semibold",
     textAlign: "center",
   },
-  contentContainer: {
-    padding: 16,
-  },
+
   headerImage: {
     color: "#808080",
     bottom: -90,
