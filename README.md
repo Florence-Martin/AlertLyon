@@ -18,10 +18,10 @@ Scannez le QR code ci-dessous pour installer et tester l'application sur votre a
 
 ### Android
 
-<img src="./assets/images/AlertLyon.svg" alt="QR Code Android" height="120px" width="120px">
+<img src="./assets/images/AlertLyon.svg" alt="QR Code Android" height="150px" width="150px">
 
 ### iOS
 
-<img src="./assets/images/AlertLyon.svg" alt="QR Code iOS" height="120px" width="120px">
+<img src="./assets/images/AlertLyon.svg" alt="QR Code iOS" height="150px" width="150px">
 
 Merci d’avoir choisi AlertLyon ! Aidez-nous à rendre Lyon plus sûre en signalant les incidents de manière rapide et efficace. 🚀`
